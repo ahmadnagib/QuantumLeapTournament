@@ -20,7 +20,7 @@ The information related to how to get started is included in this documentation.
 - It is recommended to use [Git Bash](https://git-for-windows.github.io/) or any similar BASH emulation if you are using Windows OS.
 - [Udacity Fullstack Nanodegree Virtual Machine](https://github.com/udacity/fullstack-nanodegree-vm) should be downloaded or cloned.
 
-### Deploy QuantumLeap Catalog Locally
+### Deploy QuantumLeap Tournament Test Locally
 1. Download [Udacity Fullstack Nanodegree Virtual Machine](https://github.com/udacity/fullstack-nanodegree-vm).
 2. Download the [project's files](https://github.com/ahmadnagib/QuantumLeapTournament) and put them altogether in 'tournament' folder of the VM replacing the already existing files.
 3. Using Git Bash, move to the path of vagrant folder in the downloaded vm files.
