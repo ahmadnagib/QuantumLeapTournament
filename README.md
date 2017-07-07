@@ -22,7 +22,7 @@ The information related to how to get started is included in this documentation.
 
 ### Deploy QuantumLeap Catalog Locally
 1. Download [Udacity Fullstack Nanodegree Virtual Machine](https://github.com/udacity/fullstack-nanodegree-vm).
-2. Download the [project's files](https://github.com/ahmadnagib/QuantumLeapCatalog) and put them altogether in 'tournament' folder of the VM replacing the already existing files.
+2. Download the [project's files](https://github.com/ahmadnagib/QuantumLeapTournament) and put them altogether in 'tournament' folder of the VM replacing the already existing files.
 3. Using Git Bash, move to the path of vagrant folder in the downloaded vm files.
 4. Launch the Vagrant VM using `vagrant up` command (This might take a while in the first time).
 5. Run `vagrant ssh` command to access the VM.
