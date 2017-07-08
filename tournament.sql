@@ -39,8 +39,8 @@ FROM players LEFT OUTER JOIN matches
     ON players.id = matches.winner
 GROUP BY players.id;
 
--- create a players standings view by simply joining
--- the two created views above
+-- create a players standings view by simply joining the two
+-- created views above inspired from udacity reviewer example
 CREATE VIEW players_standings AS
 SELECT players_match_count.id, players_match_count.name, players_win_count.win_count, players_match_count.match_count
 FROM players_win_count JOIN players_match_count
