@@ -29,8 +29,8 @@ The information related to how to get started is included in this documentation.
 6. Move to 'tournament' folder containing the project files using `cd /vagrant/tournament`.
 7. Connect to PostgreSQL using `psql` command.
 8. Build and access the tournament database using `\i tournament.sql` command
-9. Run the QL Tournament test using `python tournament_test.py`.
-10.  If everything has been set up correctly, you will get a message `Success! All tests pass!` at the end of the printed output from step 9.
+9. Run the QL Tournament ten test cases provided by Udacity using `python tournament_test.py`.
+10.  If everything has been set up correctly, you will get a message `Success! All tests pass!` at the end of the printed output from the test cases of step 9.
 
 ## What is included
 
