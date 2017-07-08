@@ -9,15 +9,10 @@ def connect():
 
 def deleteMatches():
     """Remove all the matches records from the 'matches' table.
-    Sets 'win_count' and 'match_count' columns of 'players' table
-    to zero when called
     """
     db_conn = connect()
     cursor = db_conn.cursor()
-    query = """ DELETE FROM matches;
-                UPDATE players
-                SET win_count = DEFAULT, match_count = DEFAULT;
-            """
+    query = "DELETE FROM matches;"
     cursor.execute(query)
     db_conn.commit()
     db_conn.close()
@@ -61,6 +56,7 @@ def registerPlayer(name):
     name = bleach.clean(name)
     db_conn = connect()
     cursor = db_conn.cursor()
+
     # using query parameters to protect from potential SQL injection
     query = "INSERT into players (name) VALUES (%s);"
     cursor.execute(query, (name,))
@@ -84,6 +80,7 @@ def playerStandings():
     """
     db_conn = connect()
     cursor = db_conn.cursor()
+    # select all the records from the created players_standings view
     query = "SELECT * FROM players_standings;"
     cursor.execute(query)
     rows = cursor.fetchall()
@@ -107,16 +104,9 @@ def reportMatch(winner, loser):
     cursor = db_conn.cursor()
     query1 = """
             INSERT into matches (winner, loser) VALUES (%s, %s);
-            UPDATE players
-            SET win_count = win_count + 1
-            WHERE id = %s;
-            UPDATE players
-            SET match_count = match_count + 1
-            WHERE id = %s or id = %s;
             """
     # using query parameters to protect from potential SQL injection
-    cursor.execute(query1, ((winner,), (loser,),
-                   (winner,), (winner,), (loser,)))
+    cursor.execute(query1, ((winner,), (loser,)))
     db_conn.commit()
     db_conn.close()
 
@@ -136,16 +126,16 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
-    db_conn = connect()
-    cursor = db_conn.cursor()
-    query = "SELECT id, name FROM players_standings;"
-    cursor.execute(query)
-    result_list = cursor.fetchall()
-    db_conn.close()
+
+    # get the playerstandings view as a list of tuples
+    result_list = playerStandings()
+
+    # initialize the output pairs list and a loop count restrictor
     pairs_list = []
     n = 0
-    # arranges each two consecutive rows of
-    # the result set into one tuple
+
+    # arrange the id and name of each two consecutive rows
+    # of the result set into one tuple
     for i in range(len(result_list)/2):
         pairs_list.append((result_list[n][0], result_list[n][1],
                           result_list[n+1][0], result_list[n+1][1]))
